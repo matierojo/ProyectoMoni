@@ -67,7 +67,7 @@ function LoanList({ loans, role }) {
                         </thead>
                         <tbody>
                             {Array.isArray(loanData) ? loanData.map(loan => (
-                                <tr key={loan.id} style={{ backgroundColor: loan.paid ? "#4eb653" : "" }}>
+                                <tr key={loan.id} style={{ backgroundColor: loan.paid ? "gray" : "" }}>
                                     <td>{loan.holder}</td>
                                     <td>{loan.net_amount}</td>
                                     <td>{loan.interest_rate}</td>
@@ -75,7 +75,7 @@ function LoanList({ loans, role }) {
                                     <td>{loan.number_installments}</td>
                                     <td style={{ display: 'flex', gap: 5 }}>
                                         <button style={{ backgroundColor: 'var(--color-button)' }} onClick={() => deleteLoan(loan.id)} title='Borrar'><FaTrash /></button>
-                                        <button style={{ backgroundColor: 'var(--color-button)' }} title='Ver Detalle'><FaEye /></button>
+                                        {/* <button style={{ backgroundColor: 'var(--color-button)' }} title='Ver Detalle'><FaEye /></button> */}
                                         <button style={{ backgroundColor: 'var(--color-button)' }} onClick={() => markPaid(loan.id)} disabled={loan.paid} title='Pagado'><FaCheck /></button>
                                     </td>
                                 </tr>
