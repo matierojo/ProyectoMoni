@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    container_name: django_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/backend:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings
+
+  frontend:
+    build: ./frontend
+    container_name: react_app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules

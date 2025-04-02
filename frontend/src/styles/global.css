@@ -1,0 +1,17 @@
+:root {
+    --color-primary: #318CE7;
+    --color-secondary: #4A9AE9;
+    --color-button: #6AA9E9;
+    --color-border: #98C3ED;
+    --color-background: #AFDCEA;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-background);
+}

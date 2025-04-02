@@ -1,0 +1,29 @@
+# Git ignore para Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+/db.sqlite3
+/media/
+/static/
+.env
+*.log
+
+# Git ignore para React
+node_modules/
+build/
+dist/
+.env
+.npm/
+.yarn/
+
+# General
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.swo
+*.iml
+*.bak
+*.tmp
