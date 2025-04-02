@@ -1,50 +1,26 @@
-# Introduccion
+# Introducción
 
-...
+Este sistema permite gestionar préstamos de manera sencilla, ofreciendo funcionalidades tanto para usuarios no registrados como para clientes y administradores.
 
-# Proyecto con Django y React en Docker
+## Funcionalidades principales
 
-Este proyecto utiliza **Docker** para levantar un entorno de desarrollo con un backend en **Django** y un frontend en **React**. El backend utiliza la base "db.sqlite3" que nos proporciona Django.
+### Para usuarios no registrados:
+- **Solicitar un préstamo** sin necesidad de crear una cuenta.
+- **Simular un préstamo** para conocer el monto de las cuotas y el total a pagar.
+- **Registrarse como Cliente** si desean acceder a funcionalidades adicionales.
 
-## Requisitos Previos
+### Para usuarios registrados:
 
-Para poder levantar el proyecto solo debes tener instalado Docker y Git.
+#### Cliente
+- **Solicitar un préstamo** como titular asociado a su cuenta.
+- **Visualizar sus préstamos** activos y su estado.
 
-## Instalación y Configuración
+#### Administrador
+- **Ver el listado completo de préstamos**, incluyendo los de todos los usuarios y los solicitados sin registro.
+- **Cargar nuevos préstamos** manualmente.
+- **Gestionar préstamos**, pudiendo eliminarlos o marcarlos como pagados.
 
-1. **Clonar el repositorio**
-   ```sh
-   git clone https://github.com/usuario/proyecto.git
-   cd proyecto
-   ```
-
-2. **Levantar los contenedores**
-   Ejecuta el siguiente comando en la raíz del proyecto:
-   ```sh
-   docker-compose up --build
-   ```
-   Esto descargará las imágenes necesarias y creará los contenedores.
-
-3. **Verificar que todo funciona**
-   - **Backend**: Abre [http://localhost:8000]
-   - **Frontend**: Abre [http://localhost:5173]
-
-
-# Simulador de Prestamos.
-
-Al iniciar desde la pantalla principal tenes las siguientes opciones:
-
-1. Pedir un prestamo sin loguearte.
-2. Simular un prestamo para saber cuanto vas a pagar y en cuanto te van a quedar las cuotas.
-3. Iniciar sesion con tu usuario y en caso de no tener usuario se podra registrar con el rol "Cliente".
-
-Al iniciar sesion, existen dos posibilidades:
-
-1. Iniciar sesion con usuario con rol "Administrador", el cual podra ver un listado de todos los prestamos (de todos los usuarios y de los que solicitaron prestamo sin ser usuario) y cargar nuevos prestamos.
-2. Iniciar sesion con un usuario con rol "Cliente". En este caso podras pedir un prestamo que tendra a este usuario como titular y por otro lado ver los prestamos que tiene el usuario.
-
-Actualmente existe el siguien usuario con rol "Administrador":
-   - email: monionline@gmail.com
-   - contraseña: 1234aB
-
-Dentro del listado de prestamos, se podra eliminar o marcar como pagado el prestamo que se desee.
+## Credenciales de prueba
+Actualmente, existe un usuario administrador con las siguientes credenciales:
+- **Email:** monionline@gmail.com
+- **Contraseña:** 1234aB
