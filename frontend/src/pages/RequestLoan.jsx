@@ -7,8 +7,9 @@ function RequestLoan() {
     const navigate = useNavigate();
     
     const userId = localStorage.getItem("user_id");
+    const role = localStorage.getItem("role");
 
-    const [loanData, setLoanData] = useState(userId ? {} : { applicant: {} });
+    const [loanData, setLoanData] = useState(!userId || role === "admin" ? { applicant: {} } : {});
 
     const GENDER_CHOICES = [
         { value: 'M', label: 'Masculino' },
@@ -20,7 +21,7 @@ function RequestLoan() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (userId) {
+        if (userId && role !== "admin") {
             setLoanData(prev => ({ ...prev, [name]: value }));
         } else {
             if (['amount', 'number_installments'].includes(name)) {
@@ -36,19 +37,14 @@ function RequestLoan() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("dataaa", loanData);
-
-        const dataToSend = userId ? 
-            { ...loanData, user: parseInt(userId), applicant: null } :
-            { ...loanData, user: null };
-
+        const dataToSend = userId && role !== "admin" ? 
+        { ...loanData, user: parseInt(userId), applicant: null } :
+        { ...loanData, user: null };
+        
+        console.log("data", dataToSend)
         try {
             await post("loan/", dataToSend);
-            if (userId) {
-                navigate("/loans");
-            } else {
-                navigate("/");
-            }
+            navigate(userId ? "/loans" : "/");
         } catch (err) {
             console.log("errrrrr", err);
         }
@@ -57,10 +53,10 @@ function RequestLoan() {
     return (
         <div style={{ backgroundColor: 'white', padding: '20px', width: '1000px', height: '500px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
             <h2 style={{ color: 'var(--color-primary)' }}>Solicitar Préstamo</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>} {/* Mostrar el error */}
+            {error && <p style={{ color: "red" }}>{error}</p>} 
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                {!userId && (
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {(!userId || role === "admin") && (
                     <>
                         <input name="name" placeholder="Nombre" onChange={handleChange} className='input-form' required />
                         <input name="last_name" placeholder="Apellido" onChange={handleChange} className='input-form' required />
